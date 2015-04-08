@@ -1,18 +1,24 @@
 #!/usr/bin/env python
 from itertools import permutations
 
-n,m = [int(x) for x in raw_input().split()]
+n,m = [int(x) for x in input().split()]
 list1 = []
 diff = n-m
 
-for i in xrange(0,diff):
-    list1.append('T')
+def perma(diff):
+    for i in range(0,diff):
+        list1.append('T')
 
-    
-for j in xrange(diff,n):
-    list1.append('H')
 
-list2 = list(permutations(list1))
-list3 = (list(set(list2)))
+    for j in range(diff,n):
+        list1.append('H')
 
-print(len(list3))
+    list2 = list(permutations(list1))
+    list3 = (list(set(list2)))
+
+    return(len(list3))
+
+print(perma(diff))
+
+import cProfile  #explore profile
+cProfile.run('perma(diff)')
